@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <div class='container my-4'>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <img src={% static 'images/result.jpg' %} class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h3 class="card-title">Score: {{score.score}}</h3>
+                      <p class="card-text">Correct Answers : {{score.correct}}</p>                    
+                      <p class="card-text">Incorrect Answers : {{score.incorrect}}</p>                    
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <table class="table border table-striped responsive ">
+                    <thead class='bg-info'>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in scores %}
+                      <tr>
+                        <td>{{item.user.first_name}}</td>
+                        <td>{{item.score}}</td>
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+            </div>
+       </div>
+    </div>
+
+{% endblock body %}
+

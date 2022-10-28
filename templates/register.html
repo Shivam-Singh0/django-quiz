@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<div class='container'>
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class='row'>
+        <div class='col-md-4 offset-md-4 my-4'>
+            <div class='card'>
+                <div class='card-header bg-info text-white'>
+                    <div class='card-title'>
+                        Register
+                    </div>
+                </div>
+                <div class='card-body'>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="mb-4">
+                            {{field.name}}
+                            <br>
+                            {{field}}
+                        </div>
+                        {% endfor %}
+                        <button class='btn btn-primary' type="submit">Signup</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock body %}
